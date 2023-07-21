@@ -30,7 +30,7 @@ async function connect () {
             console.log("Connected to to_do_list!")
         })
 
-        con.query("CREATE TABLE IF NOT EXISTS task(task_id INT AUTO_INCREMENT PRIMARY KEY, description VARCHAR(255) NOT NULL, is_checked Boolean NOT NULL)", function(err, result){
+        con.query("CREATE TABLE IF NOT EXISTS task(task_id INT AUTO_INCREMENT PRIMARY KEY, description VARCHAR(255) NOT NULL, is_checked BOOLEAN NOT NULL)", function(err, result){
             if (err) throw err
             if (result.warningCount === 0){
                 console.log("Table Created: tasks")
