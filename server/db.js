@@ -58,8 +58,44 @@ async function getTask(id) {
     }
 }
 
+async function createTask(description, is_checked){
+    try {
+        const data = await con.promise().query(`INSERT INTO task(description, is_checked) VALUES("${description}", ${is_checked})`)
+        return `Task ${data[0].insertId} was created.`
+    } catch (err) {
+        console.log(`Error: ${err.message}`)
+    }
+}
+
+async function updateTask(id, description, is_checked){
+    try {
+        const data = await con.promise().query(`UPDATE task SET description = "${description}", is_checked = ${is_checked} WHERE task_id = ${id}`)
+        return data[0].info
+    } catch (err) {
+        console.log(`Error: ${err.message}`)
+    }
+}
+
+async function deleteTask(id){
+    try {
+        const data = await con.promise().query(`DELETE FROM task WHERE task_id = ${id}`)
+        const rows = data[0].affectedRows
+
+        if (rows === 1){
+            return "1 row was deleted."
+        }
+
+        return `${rows} rows were deleted.`
+    } catch (err) {
+        console.log(`Error: ${err.message}`)
+    }
+}
+
 module.exports = {
     connect,
     getTasks,
-    getTask
+    getTask,
+    createTask,
+    updateTask,
+    deleteTask
 }
