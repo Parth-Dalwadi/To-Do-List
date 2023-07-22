@@ -1,4 +1,4 @@
-const mysql = require('mysql')
+const mysql = require('mysql2')
 require('dotenv').config()
 
 const host = process.env.DB_HOST
@@ -40,4 +40,26 @@ async function connect () {
     })
 }
 
-module.exports.connect = connect
+async function getTasks(){
+    try {
+        const data = await con.promise().query("SELECT * FROM task")
+        return data[0]
+    } catch (err) {
+        console.log(`Error: ${err.message}`)
+    }
+}
+
+async function getTask(id) {
+    try {
+        const data = await con.promise().query(`SELECT * FROM task WHERE task_id = ${id}`)
+        return data[0]
+    } catch (err) {
+        console.log(`Error: ${err.message}`)
+    }
+}
+
+module.exports = {
+    connect,
+    getTasks,
+    getTask
+}
