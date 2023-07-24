@@ -1,12 +1,13 @@
-const AddItem = () => {
+const AddItem = ({newItem, setNewItem, handleAdd}) => {
   return (
-    <form className="addForm">
+    <form className="addForm" onSubmit={handleAdd}>
       <label htmlFor="addItem">Add Item</label>
       <input 
-        autoFocus
         id="addItem"
         type="text"
         placeholder="Add Item..."
+        value={newItem}
+        onChange={(e) => setNewItem(e.target.value)}
         required
       />
       <button

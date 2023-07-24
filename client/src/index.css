@@ -124,6 +124,9 @@ footer {
   font-size: 24px;
   flex-grow:1;
   background-color: rgba(0, 0, 0, 0.1);
+  word-wrap: normal;
+  word-break: break-all;
+  width: 48px;
 }
 
 .task button{

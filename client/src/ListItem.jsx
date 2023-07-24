@@ -1,4 +1,4 @@
-const ListItem = ({item, handleCheck}) => {
+const ListItem = ({item, handleCheck, handleDelete}) => {
   return (
     <li className="task">
         <input 
@@ -12,7 +12,7 @@ const ListItem = ({item, handleCheck}) => {
         >{item.description}</label>
 
         <button
-            onClick={() => console.log(2)}
+            onClick={() => handleDelete(item.task_id)}
         >X</button>
     </li>
   )
