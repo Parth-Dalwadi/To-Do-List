@@ -31,7 +31,7 @@ app.get("/api/tasks/:id", async (req, res) => {
     res.status(200).send(data)
 })
 
-app.put("/api/tasks/:id", async (req, res) => {
+app.patch("/api/tasks/:id", async (req, res) => {
     const {id} = req.params
     const description = req.body.description
     const is_checked = req.body.is_checked

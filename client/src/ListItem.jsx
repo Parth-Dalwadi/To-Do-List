@@ -1,9 +1,9 @@
-const ListItem = ({item}) => {
+const ListItem = ({item, handleCheck}) => {
   return (
     <li className="task">
         <input 
             type="checkbox"
-            onChange={() => console.log(1)}
+            onChange={() => handleCheck(item.task_id)}
             checked={item.is_checked}
         />
         
