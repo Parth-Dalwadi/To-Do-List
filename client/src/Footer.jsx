@@ -1,7 +1,7 @@
-const Footer = () => {
+const Footer = ({length}) => {
   return (
     <footer>
-      <p>0 items.</p>
+      <p>{length} items.</p>
     </footer>
   )
 }
