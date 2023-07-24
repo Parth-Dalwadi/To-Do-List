@@ -9,6 +9,7 @@ import apiRequest from './apiRequest'
 function App() {
   const API_URL = import.meta.env.VITE_API_URL
   const [items, setItems] = useState([])
+  const [search, setSearch] = useState('')
 
   const handleCheck = async (id) => {
     const listItems = items.map(item => item.task_id === id ? {...item, is_checked: !item.is_checked} : item)
@@ -49,8 +50,11 @@ function App() {
       <div className='App'>
         <Header title={"My To-Do List"} />
         <AddItem />
-        <SearchItem />
-        <Content items={items} handleCheck={handleCheck}/>
+        <SearchItem search={search} setSearch={setSearch}/>
+        <Content 
+          items={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase()))} 
+          handleCheck={handleCheck}
+        />
         <Footer />
       </div>
     </>
