@@ -55,7 +55,7 @@ function App() {
           items={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase()))} 
           handleCheck={handleCheck}
         />
-        <Footer length={items.length}/>
+        <Footer length={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase())).length}/>
       </div>
     </>
   )
