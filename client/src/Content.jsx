@@ -5,7 +5,7 @@ const Content = ({items}) => {
     <main>
       {items.length ? (
         <ItemList items={items} /> ) : (
-        <p>Error</p>
+        <p>No items to display at the moment.</p>
       )}
     </main>
   )

@@ -2,7 +2,7 @@ import ListItem from "./ListItem"
 
 const ItemList = ({items}) => {
   return (
-    <ul>
+    <ul className="taskList">
       {items.map(item => 
         <ListItem 
             key={item.task_id}
