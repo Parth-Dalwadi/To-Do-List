@@ -78,10 +78,10 @@ body {
   border:none;
   font-weight: bold;
   transition: background-color 250ms linear, transform 300ms, linear;
-	-webkit-transition: background-color 250ms linear, transform 300ms linear;
-	-moz-transition: background-color 250ms linear, transform 300ms linear;
-	-ms-transition: background-color 250ms linear, transform 300ms linear;
-	-o-transition: background-color 250ms linear, transform 300ms linear;
+  -webkit-transition: background-color 250ms linear, transform 300ms linear;
+  -moz-transition: background-color 250ms linear, transform 300ms linear;
+  -ms-transition: background-color 250ms linear, transform 300ms linear;
+  -o-transition: background-color 250ms linear, transform 300ms linear;
 }
 
 .addForm button:hover {
@@ -150,10 +150,10 @@ body {
   margin-right: 8px;
   cursor: pointer;
   transition: background-color 250ms linear, transform 300ms, linear;
-	-webkit-transition: background-color 250ms linear, transform 300ms linear;
-	-moz-transition: background-color 250ms linear, transform 300ms linear;
-	-ms-transition: background-color 250ms linear, transform 300ms linear;
-	-o-transition: background-color 250ms linear, transform 300ms linear;
+  -webkit-transition: background-color 250ms linear, transform 300ms linear;
+  -moz-transition: background-color 250ms linear, transform 300ms linear;
+  -ms-transition: background-color 250ms linear, transform 300ms linear;
+  -o-transition: background-color 250ms linear, transform 300ms linear;
 }
 
 .task button:hover {
