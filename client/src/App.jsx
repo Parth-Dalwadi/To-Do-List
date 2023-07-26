@@ -11,6 +11,8 @@ function App() {
   const [items, setItems] = useState([])
   const [search, setSearch] = useState('')
   const [newItem, setNewItem] = useState('')
+  const [fetchError, setFetchError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleCheck = async (id) => {
     const listItems = items.map(item => item.task_id === id ? {...item, is_checked: !item.is_checked} : item)
@@ -28,6 +30,8 @@ function App() {
 
     const reqURL = `${API_URL}/${id}`
     const result = await apiRequest(reqURL, updateOptions);
+    
+    if (result) setFetchError(result)
   }
 
   const fetchItems = async () => {
@@ -36,8 +40,13 @@ function App() {
       if (!response.ok) throw Error("Did not receive expected data.")
       const listItems = await response.json()
       setItems(listItems)
+      setFetchError(null)
     } catch (err) {
-      console.log(err)
+      setFetchError(err.message)
+    } finally {
+      if (isLoading === true) {
+        setIsLoading(false)
+      }
     }
   }
 
@@ -58,7 +67,11 @@ function App() {
     const reqURL = `${API_URL}`
     const result = await apiRequest(reqURL, postOptions)
 
-    fetchItems()
+    if (result) {
+      setFetchError(result)
+    } else {
+      fetchItems()
+    }
   }
 
   const handleAdd = (e) => {
@@ -78,6 +91,8 @@ function App() {
 
     const reqURL = `${API_URL}/${id}`
     const result = await apiRequest(reqURL, deleteOptions)
+
+    if (result) setFetchError(result)
   }
 
   useEffect(() => {
@@ -91,11 +106,17 @@ function App() {
         <Header title={"My To-Do List"} />
         <AddItem newItem={newItem} setNewItem={setNewItem} handleAdd={handleAdd}/>
         <SearchItem search={search} setSearch={setSearch}/>
-        <Content 
-          items={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase()))} 
-          handleCheck={handleCheck}
-          handleDelete={handleDelete}
-        />
+        <main>
+          {isLoading && <p className="response">Loading Items...</p>}
+          {fetchError && <p className="response" id="error">{`Error: ${fetchError}`}</p>}
+          {!isLoading && !fetchError &&
+            <Content 
+              items={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase()))} 
+              handleCheck={handleCheck}
+              handleDelete={handleDelete}
+            />
+          }
+        </main>
         <Footer length={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase())).length}/>
       </div>
     </>
