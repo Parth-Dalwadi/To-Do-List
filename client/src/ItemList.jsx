@@ -1,6 +1,6 @@
 import ListItem from "./ListItem"
 
-const ItemList = ({items, handleCheck, handleDelete}) => {
+const ItemList = ({items, handleCheck, handleDelete, navigate}) => {
   return (
     <ul className="taskList">
       {items.map(item => 
@@ -9,6 +9,7 @@ const ItemList = ({items, handleCheck, handleDelete}) => {
             item={item}
             handleCheck={handleCheck}
             handleDelete={handleDelete}
+            navigate={navigate}
         />
       )}
     </ul>

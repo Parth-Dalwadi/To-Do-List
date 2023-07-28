@@ -1,7 +1,7 @@
 const AddItem = ({newItem, setNewItem, handleAdd}) => {
   return (
     <form className="addForm" onSubmit={handleAdd}>
-      <label htmlFor="addItem">Add Item</label>
+      <label htmlFor="addItem" className="htmlForLabel">Add Item</label>
       <input 
         id="addItem"
         type="text"

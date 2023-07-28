@@ -48,14 +48,14 @@ body {
   font-weight: bold;
 }
 
+.htmlForLabel {
+  position: absolute;
+  left: -99999px;
+}
+
 .addForm {
   display: flex;
   justify-content: center;
-}
-
-.addForm label {
-  position: absolute;
-  left: -99999px;
 }
 
 .addForm input {
@@ -91,11 +91,6 @@ body {
 .searchForm {
   display: flex;
   justify-content: center;
-}
-
-.searchForm label {
-  position: absolute;
-  left: -99999px;
 }
 
 .searchForm input {
@@ -140,6 +135,16 @@ body {
   width: 48px;
   margin-left: 0.5rem;
   padding: 5px 20px;
+  cursor: pointer;
+  transition: background-color 250ms linear, transform 300ms, linear;
+  -webkit-transition: background-color 250ms linear, transform 300ms linear;
+  -moz-transition: background-color 250ms linear, transform 300ms linear;
+  -ms-transition: background-color 250ms linear, transform 300ms linear;
+  -o-transition: background-color 250ms linear, transform 300ms linear;
+}
+
+.task label:hover {
+  background-color: rgba(145, 145, 120, 0.4);
 }
 
 .task button{
@@ -179,6 +184,93 @@ body {
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  min-height: 100vh;
+}
+
+.editFormContainer {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 5px 5px black;
+}
+
+.editForm h1 {
+  text-align: center;
+}
+
+.editFormControl {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  justify-items: start;
+  gap: 0 1rem;
+  margin-bottom: 0.75rem;
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  border-radius: 20px;
+  padding: 0px 5px;
+}
+
+.editFormControl label {
+  padding: 10px 0px;
+  font-size: 20px;
+}
+
+.editFormControl input {
+  border: none;
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.editFormControl input[type=checkbox]{
+  margin-left: 5px;
+}
+
+.editFormBtn {
+  display: grid;
+  margin: 30px auto 0;
+  width: 100%;
+  padding: 5px;
+  color: black;
+  background-color: #E684AE;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  transition: background-color 250ms linear, transform 300ms, linear;
+  -webkit-transition: background-color 250ms linear, transform 300ms linear;
+  -moz-transition: background-color 250ms linear, transform 300ms linear;
+  -ms-transition: background-color 250ms linear, transform 300ms linear;
+  -o-transition: background-color 250ms linear, transform 300ms linear;
+}
+
+.editFormBtn:hover {
+  background-color: #77A1D3;
+}
+
+#editCheck {
+    width: auto;
+}
+
+#returnBtn {
+  background-color: rgb(180, 82, 124);
+  margin-bottom: 10px;
+}
+
+#returnBtn:hover {
+  background-color: rgb(79, 121, 171);
 }
 
 @media (min-width: 820px) {

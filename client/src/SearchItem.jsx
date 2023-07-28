@@ -1,7 +1,7 @@
 const SearchItem = ({search, setSearch}) => {
   return (
     <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
-      <label htmlFor="searchItem">Search Item</label>
+      <label htmlFor="searchItem" className="htmlForLabel">Search Item</label>
       <input 
         id="searchItem"
         type="text"

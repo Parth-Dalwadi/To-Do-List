@@ -1,7 +1,8 @@
-const ListItem = ({item, handleCheck, handleDelete}) => {
+const ListItem = ({item, handleCheck, handleDelete, navigate}) => {
   return (
     <li className="task">
         <label
+            onClick={() => navigate(`/edit/${item.task_id}`)}
             style={(item.is_checked) ? {textDecoration: 'line-through'} : null}
         >{item.description}</label>
 
