@@ -8,6 +8,8 @@ const EditItem = () => {
   const API_URL = import.meta.env.VITE_API_URL
   const [editItem, setEditItem] = useState('')
   const {id} = useParams()
+  const [fetchError, setFetchError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
   const fetchItems = async () => {
@@ -16,9 +18,12 @@ const EditItem = () => {
       if (!response.ok) throw Error("Did not receive expected data.")
       const item = await response.json()
       setEditItem(item[0])
+      setFetchError(null)
     } catch (err) {
-      console.log(err)
-    } 
+      setFetchError(err.message)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleEdit = async (e) => {
@@ -34,8 +39,13 @@ const EditItem = () => {
 
     const reqURL = `${API_URL}/${id}`
     const result = await apiRequest(reqURL, updateOptions)
-    navigate("/")
-    if (window.scrollY !== 0) window.scrollTo(0, 0)
+
+    if (result) {
+      setFetchError(result)
+    } else {
+      navigate("/")
+      if (window.scrollY !== 0) window.scrollTo(0, 0)
+    }
   }
 
   useEffect(() => {
@@ -45,10 +55,11 @@ const EditItem = () => {
 
   return (
     <main>
-      {editItem ? (
-        <EditForm editItem={editItem} setEditItem={setEditItem} handleEdit={handleEdit} navigate={navigate}/>) : (
-        <p className="response"></p>
-      )}
+      {isLoading && <p className="response">Loading Item...</p>}
+      {fetchError && <p className="response" id="error">{`Error: ${fetchError}`}</p>}
+      {!isLoading && !fetchError && 
+        <EditForm editItem={editItem} setEditItem={setEditItem} handleEdit={handleEdit} navigate={navigate}/>
+      }
     </main>
   )
 }
