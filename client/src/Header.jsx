@@ -1,6 +1,8 @@
+import styles from './styles/Header.module.css'
+
 const Header = ({title}) => {
   return (
-    <header id="header">
+    <header id={styles.header}>
       <h1>{title}</h1>
     </header>
   )

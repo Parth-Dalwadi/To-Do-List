@@ -1,6 +1,8 @@
+import styles from './styles/SearchItem.module.css'
+
 const SearchItem = ({search, setSearch}) => {
   return (
-    <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
+    <form className={styles.searchForm} onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="searchItem" className="htmlForLabel">Search Item</label>
       <input 
         id="searchItem"

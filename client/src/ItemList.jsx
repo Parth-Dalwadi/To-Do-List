@@ -1,8 +1,9 @@
 import ListItem from "./ListItem"
+import styles from './styles/ItemList.module.css'
 
 const ItemList = ({items, handleCheck, handleDelete, navigate}) => {
   return (
-    <ul className="taskList">
+    <ul className={styles.taskList}>
       {items.map(item => 
         <ListItem 
             key={item.task_id}

@@ -1,6 +1,8 @@
+import styles from './styles/AddItem.module.css'
+
 const AddItem = ({newItem, setNewItem, handleAdd}) => {
   return (
-    <form className="addForm" onSubmit={handleAdd}>
+    <form className={styles.addForm} onSubmit={handleAdd}>
       <label htmlFor="addItem" className="htmlForLabel">Add Item</label>
       <input 
         id="addItem"

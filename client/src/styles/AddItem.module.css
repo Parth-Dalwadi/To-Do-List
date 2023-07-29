@@ -1,0 +1,44 @@
+.addForm {
+  display: flex;
+  justify-content: center;
+}
+
+.addForm input {
+  width: 80%;
+  min-height: 32px;
+  background-color: pink;
+  border:none;
+  font-size: 20px;
+}
+
+.addForm button {
+  min-height: 32px;
+  width: 20%;
+  font-size: 1rem;
+  background-color: violet;
+  color: black;
+  cursor: pointer;
+  border-style: solid;
+  border-color: black;
+  border:none;
+  font-weight: bold;
+  transition: background-color 250ms linear, transform 300ms, linear;
+  -webkit-transition: background-color 250ms linear, transform 300ms linear;
+  -moz-transition: background-color 250ms linear, transform 300ms linear;
+  -ms-transition: background-color 250ms linear, transform 300ms linear;
+  -o-transition: background-color 250ms linear, transform 300ms linear;
+}
+
+.addForm button:hover {
+  background-color: purple;
+}
+
+@media (min-width: 820px) {
+  .addForm input{
+    width: 40%;
+  }
+    
+  .addForm button{
+    width: 10%;
+  }
+}

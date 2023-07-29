@@ -1,0 +1,65 @@
+.task {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  margin: 1rem 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.task input{
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.task label {
+  font-size: 24px;
+  flex-grow:1;
+  background-color: rgba(245, 245, 220, 0.8);
+  word-wrap: normal;
+  word-break: break-all;
+  width: 48px;
+  margin-left: 0.5rem;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: background-color 250ms linear, transform 300ms, linear;
+  -webkit-transition: background-color 250ms linear, transform 300ms linear;
+  -moz-transition: background-color 250ms linear, transform 300ms linear;
+  -ms-transition: background-color 250ms linear, transform 300ms linear;
+  -o-transition: background-color 250ms linear, transform 300ms linear;
+}
+
+.task label:hover {
+  background-color: rgba(145, 145, 120, 0.4);
+}
+
+.task button{
+  width: 48px;
+  height: 48px;
+  color: white;
+  background-color: rgba(180, 0, 0, 1);
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background-color 250ms linear, transform 300ms, linear;
+  -webkit-transition: background-color 250ms linear, transform 300ms linear;
+  -moz-transition: background-color 250ms linear, transform 300ms linear;
+  -ms-transition: background-color 250ms linear, transform 300ms linear;
+  -o-transition: background-color 250ms linear, transform 300ms linear;
+}
+
+.task button:hover {
+  background-color: rgba(100, 0, 0, 1);
+}
+
+@media (min-width: 820px) {
+  .task {
+    width: 50%;
+  }
+}

@@ -1,10 +1,12 @@
+import styles from './styles/EditForm.module.css'
+
 const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
   return (
-    <form className="editForm" onSubmit={(e) => handleEdit(e)}>
-        <div className="editFormContainer">
+    <form className={styles.editForm} onSubmit={(e) => handleEdit(e)}>
+        <div className={styles.editFormContainer}>
             <label htmlFor="editItem" className="htmlForLabel">Edit Item</label>
             <h1>Edit Item</h1>
-            <div className="editFormControl">
+            <div className={styles.editFormControl}>
                 <label>Task:</label>
                 <input 
                     id="editItem"
@@ -16,7 +18,7 @@ const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
                 />
             </div>
 
-            <div className="editFormControl">
+            <div className={styles.editFormControl}>
                 <label>Complete:</label>
                 <input
                     id="editCheck"
@@ -26,9 +28,9 @@ const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
                 />
             </div>
             
-            <div class="editFormBtnControl">
-                <button type="submit" className="editFormBtn">Submit</button>
-                <button type="button" className="editFormBtn" id="returnBtn" onClick={() => {navigate("/"); if (window.scrollY !== 0) window.scrollTo(0, 0)}}>Return to Tasks</button>
+            <div class={styles.editFormBtnControl}>
+                <button type="submit" className={styles.editFormBtn}>Submit</button>
+                <button type="button" className={styles.editFormBtn} id={styles.returnBtn} onClick={() => {navigate("/"); if (window.scrollY !== 0) window.scrollTo(0, 0)}}>Return to Tasks</button>
             </div>
         </div>      
     </form>
