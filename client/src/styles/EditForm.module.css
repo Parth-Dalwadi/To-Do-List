@@ -45,6 +45,7 @@
 }
 
 .editFormControl input[type=checkbox]{
+  width: auto;
   margin-left: 5px;
 }
 
@@ -94,7 +95,7 @@
     padding-left: 10px;
   }
 
-  .editFormControl input {
+  .editFormControl input[type=text] {
     width: 80%;
   }
 
