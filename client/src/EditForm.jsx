@@ -25,9 +25,11 @@ const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
                     onChange={() => setEditItem({...editItem, is_checked: !editItem.is_checked})}
                 />
             </div>
-
-            <button type="submit" className="editFormBtn">Submit</button>
-            <button type="button" className="editFormBtn" id="returnBtn" onClick={() => {navigate("/"); if (window.scrollY !== 0) window.scrollTo(0, 0)}}>Return to Tasks</button>
+            
+            <div class="editFormBtnControl">
+                <button type="submit" className="editFormBtn">Submit</button>
+                <button type="button" className="editFormBtn" id="returnBtn" onClick={() => {navigate("/"); if (window.scrollY !== 0) window.scrollTo(0, 0)}}>Return to Tasks</button>
+            </div>
         </div>      
     </form>
   )

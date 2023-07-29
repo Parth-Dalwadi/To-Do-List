@@ -4,7 +4,7 @@ import EditForm from "./EditForm"
 import apiRequest from "./apiRequest"
 
 const EditItem = () => {
-  document.body.style.marginBottom = '0';
+  document.body.style.marginBottom = '0'
   const API_URL = import.meta.env.VITE_API_URL
   const [editItem, setEditItem] = useState('')
   const {id} = useParams()

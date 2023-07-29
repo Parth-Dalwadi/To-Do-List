@@ -193,6 +193,7 @@ body {
   justify-content: center;
   font-weight: bold;
   min-height: 100vh;
+  margin: 0 auto;
 }
 
 .editFormContainer {
@@ -214,7 +215,6 @@ body {
   justify-items: start;
   gap: 0 1rem;
   margin-bottom: 0.75rem;
-  /* background-color: rgba(255, 255, 255, 0.3); */
   border-radius: 20px;
   padding: 0px 5px;
 }
@@ -271,6 +271,71 @@ body {
 
 #returnBtn:hover {
   background-color: rgb(79, 121, 171);
+}
+
+@media (max-width: 480px) {
+  .editFormContainer {
+    padding: 20px 0;
+  }
+
+  .editFormContainer label {
+    padding-left: 10px;
+  }
+
+  .editFormControl input {
+    width: 80%;
+  }
+
+  .editFormBtn {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .editForm {
+    width: 90%;
+  }
+}
+
+@media (max-height: 380px) {
+  .editFormContainer {
+    padding: 5px 10px;
+  }
+
+  .editFormBtn {
+    width: 90%;
+  }
+}
+
+@media (max-width: 280px) {
+  .editFormControl {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-height: 280px) {
+  .editFormContainer {
+    padding: 0;
+    min-height: 95vh
+  }
+  
+  .editFormControl label {
+    padding: 0;
+  }
+
+  .editFormBtnControl {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .editFormBtn {
+    width: 100%;
+    padding: 10px;
+    margin: 50px 10px 10px;
+  }
 }
 
 @media (min-width: 820px) {

@@ -15,7 +15,7 @@ const Home = ({setEditItem}) => {
   const [fetchError, setFetchError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
-  document.body.style.marginBottom = '10vh';
+  document.body.style.marginBottom = '10vh'
 
   const handleCheck = async (id) => {
     const listItems = items.map(item => item.task_id === id ? {...item, is_checked: !item.is_checked} : item)
