@@ -19,7 +19,6 @@ const EditItem = () => {
       if (!response.ok) throw Error("Did not receive expected data.")
       const item = await response.json()
       setEditItem(item[0])
-      setOriginal(item[0].description)
       setFetchError(null)
     } catch (err) {
       setFetchError(err.message)
@@ -60,6 +59,18 @@ const EditItem = () => {
   useEffect(() => {
     fetchItems()
   }, [])
+
+  useEffect(() => {
+    if (isLoading === true) {
+      return
+    }
+
+    if (isLoading === false) {
+      if (editItem) {
+        setOriginal(editItem.description)
+      }
+    }
+  }, [isLoading])
 
 
   return (
