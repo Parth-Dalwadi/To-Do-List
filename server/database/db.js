@@ -41,54 +41,34 @@ async function connect () {
 }
 
 async function getTasks(){
-    try {
-        const data = await con.promise().query("SELECT * FROM task")
-        return data[0]
-    } catch (err) {
-        console.log(`Error: ${err.message}`)
-    }
+    const data = await con.promise().query("SELECT * FROM task")
+    return data[0]
 }
 
 async function getTask(id) {
-    try {
-        const data = await con.promise().query(`SELECT * FROM task WHERE task_id = ${id}`)
-        return data[0]
-    } catch (err) {
-        console.log(`Error: ${err.message}`)
-    }
+    const data = await con.promise().query(`SELECT * FROM task WHERE task_id = ${id}`)
+    return data[0]
 }
 
 async function createTask(description, is_checked){
-    try {
-        const data = await con.promise().query(`INSERT INTO task(description, is_checked) VALUES("${description}", ${is_checked})`)
-        return `Task ${data[0].insertId} was created.`
-    } catch (err) {
-        console.log(`Error: ${err.message}`)
-    }
+    const data = await con.promise().query(`INSERT INTO task(description, is_checked) VALUES("${description}", ${is_checked})`)
+    return `Task ${data[0].insertId} was created.`
 }
 
 async function updateTask(id, description, is_checked){
-    try {
-        const data = await con.promise().query(`UPDATE task SET description = "${description}", is_checked = ${is_checked} WHERE task_id = ${id}`)
-        return data[0].info
-    } catch (err) {
-        console.log(`Error: ${err.message}`)
-    }
+    const data = await con.promise().query(`UPDATE task SET description = "${description}", is_checked = ${is_checked} WHERE task_id = ${id}`)
+    return data[0].info
 }
 
 async function deleteTask(id){
-    try {
-        const data = await con.promise().query(`DELETE FROM task WHERE task_id = ${id}`)
-        const rows = data[0].affectedRows
+    const data = await con.promise().query(`DELETE FROM task WHERE task_id = ${id}`)
+    const rows = data[0].affectedRows
 
-        if (rows === 1){
-            return "1 row was deleted."
-        }
-
-        return `${rows} rows were deleted.`
-    } catch (err) {
-        console.log(`Error: ${err.message}`)
+    if (rows === 1){
+        return "1 row was deleted."
     }
+
+    return `${rows} rows were deleted.`
 }
 
 module.exports = {
