@@ -57,6 +57,7 @@ const EditItem = () => {
   }
 
   useEffect(() => {
+    document.title = 'Edit Item'
     fetchItems()
   }, [])
 

@@ -47,6 +47,7 @@
 .editFormControl input[type=checkbox]{
   width: auto;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 .editFormBtn {

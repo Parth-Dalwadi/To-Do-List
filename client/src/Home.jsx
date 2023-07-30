@@ -100,6 +100,7 @@ const Home = ({setEditItem}) => {
   }
 
   useEffect(() => {
+    document.title = 'My To-Do List'
     fetchItems()
   }, [])
 

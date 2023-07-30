@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './styles/Missing.module.css'
+import {useEffect} from 'react'
 
 const Missing = () => {
+    useEffect(() => {
+        document.title = "404 Page Not Found"
+    }, [])
+
     return (
         <main className={styles.missing}>
             <h2>Page Not Found</h2>
