@@ -86,6 +86,23 @@
   background-color: rgb(79, 121, 171);
 }
 
+#dateLabel {
+  font-size: 16px;
+  width: auto;
+  padding: 0;
+  margin-left: 3px;
+}
+
+@media (max-width: 1000px) {
+  .editFormContainer{
+    padding: 10px;
+  }
+  
+  .editFormControl label {
+    padding: 5px 0px;
+  }
+}
+
 @media (max-width: 480px) {
   .editFormContainer {
     padding: 20px 0;
@@ -108,6 +125,10 @@
   .editForm {
     width: 90%;
   }
+
+  #dateLabel {
+    font-size: 14px;
+  }
 }
 
 @media (max-height: 380px) {
@@ -125,6 +146,24 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+  }
+
+  .editFormControl label {
+    font-size: 16px;
+  }
+
+  .editFormControl input {
+    font-size: 14px;
+  }
+
+  .editFormControl input[type=checkbox], #dateLabel {
+    margin: 0;
+  }
+}
+
+@media (max-height: 360px) {
+  .editFormBtn {
+    padding: 5px;
   }
 }
 
@@ -147,6 +186,6 @@
   .editFormBtn {
     width: 100%;
     padding: 10px;
-    margin: 50px 10px 10px;
+    margin: 20px 10px 10px;
   }
 }

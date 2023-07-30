@@ -38,7 +38,7 @@ const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
 
                     <div className={styles.editFormControl}>
                         <label>Created:</label>
-                        <label style={{fontSize: '16px'}}>{formatDate(editItem.date_created)}</label>
+                        <label id={styles.dateLabel}>{formatDate(editItem.date_created)}</label>
                     </div>
                     
                     <div className={styles.editFormBtnControl}>
