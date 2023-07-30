@@ -6,6 +6,7 @@ import apiRequest from "./apiRequest"
 const EditItem = () => {
   document.body.style.marginBottom = '0'
   const API_URL = import.meta.env.VITE_API_URL
+  const [original, setOriginal] = useState('')
   const [editItem, setEditItem] = useState('')
   const {id} = useParams()
   const [fetchError, setFetchError] = useState(null)
@@ -18,6 +19,7 @@ const EditItem = () => {
       if (!response.ok) throw Error("Did not receive expected data.")
       const item = await response.json()
       setEditItem(item[0])
+      setOriginal(item[0].description)
       setFetchError(null)
     } catch (err) {
       setFetchError(err.message)
@@ -34,7 +36,14 @@ const EditItem = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(editItem)
+      body: {}
+    }
+
+    if (original !== editItem.description){
+      const item = {...editItem, date_created: new Date().toISOString().split('T')[0]}
+      updateOptions.body = JSON.stringify(item)
+    } else {
+      updateOptions.body = JSON.stringify(editItem)
     }
 
     const reqURL = `${API_URL}/${id}`

@@ -6,6 +6,7 @@ import AddItem from "./AddItem"
 import SearchItem from "./SearchItem"
 import apiRequest from './apiRequest'
 import { useNavigate } from 'react-router-dom'
+import {format} from 'date-fns'
 
 const Home = ({setEditItem}) => {
   const API_URL = import.meta.env.VITE_API_URL
@@ -56,7 +57,8 @@ const Home = ({setEditItem}) => {
   const addItem = async (description) => {
     const item = {
       description: `${description}`,
-      is_checked: 0
+      is_checked: 0,
+      date_created: new Date().toISOString().split('T')[0]
     }
 
     const postOptions = {

@@ -22,7 +22,8 @@ app.get("/api/tasks", asyncWrapper(async (req, res) => {
 app.post("/api/tasks", asyncWrapper(async (req, res) => {
     const description = req.body.description
     const is_checked = req.body.is_checked
-    const data = await createTask(description, is_checked)
+    const date_created = req.body.date_created
+    const data = await createTask(description, is_checked, date_created)
     res.status(201).send(data)
 }))
 
@@ -36,7 +37,8 @@ app.patch("/api/tasks/:id", asyncWrapper(async (req, res) => {
     const {id} = req.params
     const description = req.body.description
     const is_checked = req.body.is_checked
-    const data = await updateTask(id, description, is_checked)
+    const date_created = req.body.date_created
+    const data = await updateTask(id, description, is_checked, date_created)
     res.status(200).send(data)
 }))
 

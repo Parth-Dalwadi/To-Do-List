@@ -1,6 +1,12 @@
 import styles from './styles/EditForm.module.css'
 
 const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
+  const formatDate = (string) => {
+    string = string.replace("-", "/")
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
+    return new Date(string).toLocaleDateString([],options)
+  }
+
   return (
     <>
         {editItem ? ( 
@@ -29,8 +35,13 @@ const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
                             onChange={() => setEditItem({...editItem, is_checked: !editItem.is_checked})}
                         />
                     </div>
+
+                    <div className={styles.editFormControl}>
+                        <label>Created:</label>
+                        <label style={{fontSize: '16px'}}>{formatDate(editItem.date_created)}</label>
+                    </div>
                     
-                    <div class={styles.editFormBtnControl}>
+                    <div className={styles.editFormBtnControl}>
                         <button type="submit" className={styles.editFormBtn}>Submit</button>
                         <button type="button" className={styles.editFormBtn} id={styles.returnBtn} onClick={() => {navigate("/"); if (window.scrollY !== 0) window.scrollTo(0, 0)}}>Return to Tasks</button>
                     </div>
