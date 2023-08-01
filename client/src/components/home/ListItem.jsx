@@ -1,4 +1,4 @@
-import styles from '../styles/ListItem.module.css'
+import styles from '../../styles/home/ListItem.module.css'
 
 const ListItem = ({item, handleCheck, handleDelete, navigate}) => {
   return (

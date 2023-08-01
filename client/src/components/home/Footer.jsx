@@ -1,4 +1,4 @@
-import styles from '../styles/Footer.module.css'
+import styles from '../../styles/home/Footer.module.css'
 
 const Footer = ({length}) => {
   return (

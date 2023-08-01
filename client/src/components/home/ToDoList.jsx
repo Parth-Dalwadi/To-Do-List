@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import Header from "./Header"
-import Footer from "./Footer"
-import Content from "./Content"
-import AddItem from "./AddItem"
-import SearchItem from "./SearchItem"
-import FilterBar from "./FilterBar"
-import apiRequest from "../utils/apiRequest"
-import newDate from "../utils/newDate"
+import Header from './Header'
+import Footer from './Footer'
+import Content from './Content'
+import AddItem from './AddItem'
+import SearchItem from './SearchItem'
+import FilterBar from './FilterBar'
+import apiRequest from '../../utils/apiRequest'
+import newDate from '../../utils/newDate'
 import { useNavigate } from 'react-router-dom'
 
-const Home = () => {
+const ToDoList = () => {
   const API_URL = import.meta.env.VITE_API_URL
   const [items, setItems] = useState([])
   const [filterItems, setFilterItems] = useState([])
@@ -173,4 +173,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default ToDoList

@@ -1,5 +1,5 @@
-import ListItem from "./ListItem"
-import styles from '../styles/ItemList.module.css'
+import ListItem from './ListItem'
+import styles from '../../styles/home/ItemList.module.css'
 
 const ItemList = ({items, handleCheck, handleDelete, navigate}) => {
   return (
