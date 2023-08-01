@@ -1,0 +1,49 @@
+.info {
+    display: flex;
+    width: 100%;
+    min-height: 32px;
+    justify-content: center;
+    align-items: center;
+}
+
+.info label {
+    background-color: #77A1D3;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+.info button {
+    text-align: center;
+    cursor: pointer;
+}
+
+.info button:hover {
+    background-color: rgb(180, 82, 124);
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    width: 25%;
+    min-height: 32px;
+    font-weight: bold;
+    background-color: #E684AE;
+    border: none;
+    transition: background-color 250ms linear, transform 300ms, linear;
+    -webkit-transition: background-color 250ms linear, transform 300ms linear;
+    -moz-transition: background-color 250ms linear, transform 300ms linear;
+    -ms-transition: background-color 250ms linear, transform 300ms linear;
+    -o-transition: background-color 250ms linear, transform 300ms linear;
+}
+
+#checkmark {
+    padding-bottom: 3px;
+}
+
+@media (min-width: 820px) {
+    .infoItem {
+        width: 12.485%;
+    }
+}

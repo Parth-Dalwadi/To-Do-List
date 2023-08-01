@@ -4,12 +4,15 @@ import Footer from "./Footer"
 import Content from "./Content"
 import AddItem from "./AddItem"
 import SearchItem from "./SearchItem"
+import InfoBar from './InfoBar'
 import apiRequest from './apiRequest'
 import { useNavigate } from 'react-router-dom'
 
 const Home = ({setEditItem}) => {
   const API_URL = import.meta.env.VITE_API_URL
   const [items, setItems] = useState([])
+  const [filterItems, setFilterItems] = useState([])
+  const [filter, setFilter] = useState('')
   const [search, setSearch] = useState('')
   const [newItem, setNewItem] = useState('')
   const [fetchError, setFetchError] = useState(null)
@@ -17,9 +20,20 @@ const Home = ({setEditItem}) => {
   const navigate = useNavigate()
   document.body.style.marginBottom = '10vh'
 
+  const handleFilter = (listItems) => {
+    if (filter === '') {
+      setFilterItems(listItems)
+    } else if (filter === 'complete') {
+      setFilterItems(listItems.filter(item => item.is_checked === 1 || item.is_checked === true))
+    } else if (filter === 'incomplete') {
+      setFilterItems(listItems.filter(item =>  item.is_checked === 0 || item.is_checked === false))
+    }
+  }
+
   const handleCheck = async (id) => {
     const listItems = items.map(item => item.task_id === id ? {...item, is_checked: !item.is_checked} : item)
     setItems(listItems)
+    handleFilter(listItems)
 
     const item = listItems.filter(item => item.task_id === id)
 
@@ -43,6 +57,7 @@ const Home = ({setEditItem}) => {
       if (!response.ok) throw Error("Did not receive expected data.")
       const listItems = await response.json()
       setItems(listItems)
+      handleFilter(listItems)
       setFetchError(null)
     } catch (err) {
       setFetchError(err.message)
@@ -88,6 +103,7 @@ const Home = ({setEditItem}) => {
   const handleDelete = async (id) => {
     const listItems = items.filter((item) => item.task_id !== id)
     setItems(listItems)
+    handleFilter(listItems)
 
     const deleteOptions = {
       method: 'DELETE'
@@ -108,22 +124,44 @@ const Home = ({setEditItem}) => {
   return (
     <>
       <Header title={"My To-Do List"} />
-      <AddItem newItem={newItem} setNewItem={setNewItem} handleAdd={handleAdd}/>
-      <SearchItem search={search} setSearch={setSearch}/>
-      <main>
-        {isLoading && <p className="response">Loading Items...</p>}
-        {fetchError && <p className="response" id="error">{`Error: ${fetchError}`}</p>}
-        {!isLoading && !fetchError &&
-        <Content 
-            items={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase()))} 
+      {isLoading &&
+        <main>
+          <p className='response'>Loading Items...</p>
+        </main>
+      }
+      {fetchError &&
+        <main>
+          <p className='response' id="error">{`Error: ${fetchError}`}</p>
+        </main>
+      }
+      {!isLoading && !fetchError &&
+        <>
+          <AddItem 
+            newItem={newItem}
+            setNewItem={setNewItem}
+            handleAdd={handleAdd}
+          />
+          <SearchItem
+            search={search}
+            setSearch={setSearch}
+          />
+          <InfoBar 
+            items={items}
+            setFilterItems={setFilterItems}
+            filter={filter}
+            setFilter={setFilter}
+          />
+          <Content 
+            items={filterItems.filter((item) => item.description.toLowerCase().includes(search.toLowerCase()))} 
             handleCheck={handleCheck}
             handleDelete={handleDelete}
-            setEditItem={setEditItem}
             navigate={navigate}
-        />
-        }
-      </main>
-      <Footer length={items.filter((item) => item.description.toLowerCase().includes(search.toLowerCase())).length}/>
+          />
+          <Footer 
+            length={filterItems.filter((item) => item.description.toLowerCase().includes(search.toLowerCase())).length}
+          />
+        </>
+      }
     </>
   )
 }

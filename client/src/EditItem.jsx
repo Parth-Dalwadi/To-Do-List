@@ -79,7 +79,12 @@ const EditItem = () => {
       {isLoading && <p className="response">Loading Item...</p>}
       {fetchError && <p className="response" id="error">{`Error: ${fetchError}`}</p>}
       {!isLoading && !fetchError && 
-        <EditForm editItem={editItem} setEditItem={setEditItem} handleEdit={handleEdit} navigate={navigate}/>
+        <EditForm
+          editItem={editItem}
+          setEditItem={setEditItem}
+          handleEdit={handleEdit}
+          navigate={navigate}
+        />
       }
     </main>
   )
