@@ -1,4 +1,4 @@
-import styles from './styles/AddItem.module.css'
+import styles from '../styles/AddItem.module.css'
 
 const AddItem = ({newItem, setNewItem, handleAdd}) => {
   return (

@@ -1,6 +1,6 @@
-import Home from './Home'
-import Missing from './Missing'
-import EditItem from './EditItem'
+import Home from './components/Home'
+import Missing from './components/Missing'
+import EditItem from './components/EditItem'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 

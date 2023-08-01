@@ -5,8 +5,8 @@ import Content from "./Content"
 import AddItem from "./AddItem"
 import SearchItem from "./SearchItem"
 import FilterBar from "./FilterBar"
-import apiRequest from "./apiRequest"
-import newDate from "./newDate"
+import apiRequest from "../utils/apiRequest"
+import newDate from "../utils/newDate"
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {

@@ -1,4 +1,4 @@
-import styles from './styles/FilterBar.module.css'
+import styles from '../styles/FilterBar.module.css'
 
 const FilterBar = ({filter, setFilter}) => {
   return (

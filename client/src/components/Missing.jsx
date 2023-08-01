@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './styles/Missing.module.css'
+import styles from '../styles/Missing.module.css'
 import {useEffect} from 'react'
 
 const Missing = () => {
