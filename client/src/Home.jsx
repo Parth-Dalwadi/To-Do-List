@@ -4,7 +4,7 @@ import Footer from "./Footer"
 import Content from "./Content"
 import AddItem from "./AddItem"
 import SearchItem from "./SearchItem"
-import InfoBar from './InfoBar'
+import FilterBar from './FilterBar'
 import apiRequest from './apiRequest'
 import { useNavigate } from 'react-router-dom'
 
@@ -145,7 +145,7 @@ const Home = ({setEditItem}) => {
             search={search}
             setSearch={setSearch}
           />
-          <InfoBar 
+          <FilterBar 
             items={items}
             setFilterItems={setFilterItems}
             filter={filter}

@@ -1,11 +1,11 @@
-import styles from './styles/InfoBar.module.css'
+import styles from './styles/FilterBar.module.css'
 
-const InfoBar = ({items, setFilterItems, filter, setFilter}) => {
+const FilterBar = ({items, setFilterItems, filter, setFilter}) => {
   return (
-    <div className={styles.info}>
-      <label className={styles.infoItem}>Filters: </label>
+    <div className={styles.bar}>
+      <label className={styles.barItem}>Filters: </label>
       <button 
-        className={styles.infoItem}
+        className={styles.barItem}
         onClick={() => {if (filter !== '') {
           setFilter('')
           setFilterItems(items)
@@ -13,7 +13,7 @@ const InfoBar = ({items, setFilterItems, filter, setFilter}) => {
       >All</button>
 
       <button 
-        className={styles.infoItem}
+        className={styles.barItem}
         id={styles.checkmark}
         onClick={() => {if (filter !== 'complete') {
           setFilter('complete') 
@@ -22,7 +22,7 @@ const InfoBar = ({items, setFilterItems, filter, setFilter}) => {
       ><>&#x2713;</></button>
 
       <button 
-        className={styles.infoItem}
+        className={styles.barItem}
         onClick={() => {if (filter !== 'incomplete') {
           setFilter('incomplete')
           setFilterItems(items.filter(item => item.is_checked === 0 || item.is_checked === false))
@@ -32,4 +32,4 @@ const InfoBar = ({items, setFilterItems, filter, setFilter}) => {
   )
 }
 
-export default InfoBar
+export default FilterBar
