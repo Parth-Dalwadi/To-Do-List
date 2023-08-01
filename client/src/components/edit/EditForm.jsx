@@ -1,4 +1,4 @@
-import styles from '../../styles/edit/EditForm.module.css'
+import styles from '../../assets/styles/edit/EditForm.module.css'
 
 const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
   const formatDate = (string) => {

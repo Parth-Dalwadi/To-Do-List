@@ -1,4 +1,4 @@
-import styles from '../../styles/home/SearchItem.module.css'
+import styles from '../../assets/styles/home/SearchItem.module.css'
 
 const SearchItem = ({search, setSearch}) => {
   return (
