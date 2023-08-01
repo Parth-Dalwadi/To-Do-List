@@ -4,11 +4,12 @@ import Footer from "./Footer"
 import Content from "./Content"
 import AddItem from "./AddItem"
 import SearchItem from "./SearchItem"
-import FilterBar from './FilterBar'
-import apiRequest from './apiRequest'
+import FilterBar from "./FilterBar"
+import apiRequest from "./apiRequest"
+import newDate from "./newDate"
 import { useNavigate } from 'react-router-dom'
 
-const Home = ({setEditItem}) => {
+const Home = () => {
   const API_URL = import.meta.env.VITE_API_URL
   const [items, setItems] = useState([])
   const [filterItems, setFilterItems] = useState([])
@@ -72,7 +73,7 @@ const Home = ({setEditItem}) => {
     const item = {
       description: `${description}`,
       is_checked: 0,
-      date_created: new Date().toISOString().split('T')[0]
+      date_created: newDate()
     }
 
     const postOptions = {
@@ -120,6 +121,14 @@ const Home = ({setEditItem}) => {
     fetchItems()
   }, [])
 
+  useEffect(() => {
+    if (isLoading === true) {
+      return
+    }
+
+    handleFilter(items)
+  }, [filter])
+
 
   return (
     <>
@@ -146,8 +155,6 @@ const Home = ({setEditItem}) => {
             setSearch={setSearch}
           />
           <FilterBar 
-            items={items}
-            setFilterItems={setFilterItems}
             filter={filter}
             setFilter={setFilter}
           />

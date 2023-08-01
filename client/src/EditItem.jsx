@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import EditForm from "./EditForm"
 import apiRequest from "./apiRequest"
+import newDate from "./newDate"
 
 const EditItem = () => {
   document.body.style.marginBottom = '0'
@@ -39,7 +40,7 @@ const EditItem = () => {
     }
 
     if (original !== editItem.description){
-      const item = {...editItem, date_created: new Date().toISOString().split('T')[0]}
+      const item = {...editItem, date_created: newDate()}
       updateOptions.body = JSON.stringify(item)
     } else {
       updateOptions.body = JSON.stringify(editItem)
