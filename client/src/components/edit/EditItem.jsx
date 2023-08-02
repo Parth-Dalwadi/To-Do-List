@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import EditForm from './EditForm'
 import apiRequest from '../../utils/apiRequest'
 import newDate from '../../utils/newDate'
@@ -78,7 +78,12 @@ const EditItem = () => {
   return (
     <main>
       {isLoading && <p className="response">Loading Item...</p>}
-      {fetchError && <p className="response" id="error">{`Error: ${fetchError}`}</p>}
+      {fetchError &&
+        <>
+          <p className="response" id="error">{`Error: ${fetchError}`}</p>
+          <Link className="responseLink" to='/' onClick={() => {if (window.scrollY !== 0) window.scrollTo(0,0)}}>Return to List</Link>
+        </>
+      }
       {!isLoading && !fetchError && 
         <EditForm
           editItem={editItem}

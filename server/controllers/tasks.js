@@ -1,4 +1,5 @@
 const asyncWrapper = require('../middleware/asyncWrapper')
+const {createCustomError} = require('../errors/customError')
 const {
     dbGetAllTasks, 
     dbGetTask, 
@@ -14,7 +15,12 @@ const getAllTasks = asyncWrapper(async (req, res, next) => {
 
 const getTask = asyncWrapper(async (req, res, next) => {
     const {id} = req.params
-    const data = await dbGetTask(id) || "Can't access database currently."
+    const data = await dbGetTask(id)
+
+    if (data.length === 0) {
+        return next(createCustomError(`No task with ID: ${id}`, 404))
+    } 
+
     res.status(200).send(data)
 })
 
@@ -32,12 +38,22 @@ const updateTask = asyncWrapper(async (req, res, next) => {
     const is_checked = req.body.is_checked
     const date_created = req.body.date_created
     const data = await dbUpdateTask(id, description, is_checked, date_created)
+
+    if (!(data.includes("1"))) {
+        return next(createCustomError(`No task with ID: ${id}`, 404))
+    }
+
     res.status(200).send(data)
 })
 
 const deleteTask = asyncWrapper(async (req, res, next) => {
     const {id} = req.params
     const data = await dbDeleteTask(id)
+
+    if (!(data.includes("1"))) {
+        return next(createCustomError(`No task with ID: ${id}`, 404))
+    }
+    
     res.status(200).send(data)
 })
 

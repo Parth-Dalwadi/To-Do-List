@@ -11,7 +11,7 @@ const Missing = () => {
         <main className={styles.notFound}>
             <h2>Page Not Found</h2>
             <p>
-                <Link to='/' onClick={() => {if (window.scrollY !== 0) window.scrollTo(0,0)}}>Return to To-Do List</Link>
+                <Link to='/' onClick={() => {if (window.scrollY !== 0) window.scrollTo(0,0)}}>Return to List</Link>
             </p>
         </main>
     )
