@@ -13,7 +13,7 @@ const con = mysql.createConnection({
     password: password
 })
 
-async function dbConnect () {
+const dbConnect = async () => {
     con.connect(function(err){
         if (err) throw err
         console.log("Connected to MySQL!")
@@ -40,27 +40,27 @@ async function dbConnect () {
     })
 }
 
-async function dbGetAllTasks(){
+const dbGetAllTasks = async () => {
     const data = await con.promise().query("SELECT task_id, description, is_checked, DATE_FORMAT(date_created, '%Y-%m-%d') AS date_created FROM task")
     return data[0]
 }
 
-async function dbGetTask(id) {
+const dbGetTask = async (id) => {
     const data = await con.promise().query(`SELECT task_id, description, is_checked, DATE_FORMAT(date_created, '%Y-%m-%d') AS date_created FROM task WHERE task_id = ${id}`)
     return data[0]
 }
 
-async function dbCreateTask(description, is_checked, date_created){
+const dbCreateTask = async (description, is_checked, date_created) => {
     const data = await con.promise().query(`INSERT INTO task(description, is_checked, date_created) VALUES("${description}", ${is_checked}, "${date_created}")`)
     return `Task ${data[0].insertId} was created.`
 }
 
-async function dbUpdateTask(id, description, is_checked, date_created){
+const dbUpdateTask = async (id, description, is_checked, date_created) => {
     const data = await con.promise().query(`UPDATE task SET description = "${description}", is_checked = ${is_checked}, date_created = "${date_created}" WHERE task_id = ${id}`)
     return data[0].info
 }
 
-async function dbDeleteTask(id){
+const dbDeleteTask = async (id) => {
     const data = await con.promise().query(`DELETE FROM task WHERE task_id = ${id}`)
     const rows = data[0].affectedRows
 
