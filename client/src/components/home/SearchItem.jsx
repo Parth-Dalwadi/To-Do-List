@@ -10,6 +10,7 @@ const SearchItem = ({search, setSearch}) => {
         role="searchbox"
         placeholder="Search Item..."
         value={search}
+        autoComplete="off"
         onChange={(e) => {setSearch(e.target.value); if (window.scrollY !== 0) window.scrollTo(0,0)}}
       />
     </form>

@@ -19,6 +19,7 @@ const EditForm = ({editItem, setEditItem, handleEdit, navigate}) => {
                     type="text"
                     value={editItem.description}
                     required
+                    autoComplete="off"
                     onClick={(e) => e.target.select()}
                     onChange={(e) => setEditItem({...editItem, description: e.target.value})}
                 />

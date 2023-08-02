@@ -9,8 +9,9 @@ const AddItem = ({newItem, setNewItem, handleAdd}) => {
         type="text"
         placeholder="Add Item..."
         value={newItem}
-        onChange={(e) => setNewItem(e.target.value)}
         required
+        autoComplete="off"
+        onChange={(e) => setNewItem(e.target.value)}
       />
       <button
         type="submit"
